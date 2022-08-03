@@ -26,10 +26,10 @@ Vagrant.configure("2") do |config|
       worker.vm.box = "generic/ubuntu2110"
       worker.vm.hostname = "worker#{i}"
       worker.vm.network "private_network", type: "dhcp"
-      master.vm.provision "file", source: "config_agent.yaml" , destination: "~/config_agent.yaml"
-      master.vm.provision "shell", path: "preliminary_stage_node.sh", privileged: false
-      master.vm.provision "shell", path: "install_agent.sh", privileged: false
-      master.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
+      worker.vm.provision "file", source: "config_agent.yaml" , destination: "~/config_agent.yaml"
+      worker.vm.provision "shell", path: "preliminary_stage_node.sh", privileged: false
+      worker.vm.provision "shell", path: "install_agent.sh", privileged: false
+      worker.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
       worker.vm.provider "{{Provider}}" do |p|
         p.memory = {{WorkerMemory}}
         p.cpus= {{WorkerCPU}}
