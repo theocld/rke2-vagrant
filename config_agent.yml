@@ -1,4 +1,4 @@
 server: https://rancher.rke2.orange.com:9345
-token: orange-rancher
+token: my-shared-secret
 cni: multus,canal
 
