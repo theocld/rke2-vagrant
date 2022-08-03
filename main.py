@@ -16,7 +16,6 @@ with open('Vagrantfile', 'r') as f :
     provider = config_dict['provider']
 
     workers_count = config_dict['topology']['workers_count']
-    masters_count = config_dict['topology']['masters_count']
     master_memory = config_dict['topology']['master']['memory']
     master_cpu = config_dict['topology']['master']['cpu']
     worker_memory = config_dict['topology']['worker']['memory']
@@ -24,7 +23,6 @@ with open('Vagrantfile', 'r') as f :
     filedata = f.read()
     newdata = filedata.replace('{{Provider}}', str(provider))
     newdata = newdata.replace('{{WorkerCount}}', str(workers_count))
-    newdata = newdata.replace('{{MasterCount}}', str(masters_count))
     newdata = newdata.replace('{{MasterMemory}}', str(master_memory))
     newdata = newdata.replace('{{MasterCPU}}', str(master_cpu))
     newdata = newdata.replace('{{WorkerMemory}}', str(worker_memory))
