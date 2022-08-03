@@ -1,0 +1,5 @@
+token: orange-rancher
+cni: multus,canal
+tls-san: 
+  - rancher.rke2.orange.com
+

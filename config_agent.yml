@@ -1,0 +1,4 @@
+server: https://rancher.rke2.orange.com:9345
+token: orange-rancher
+cni: multus,canal
+

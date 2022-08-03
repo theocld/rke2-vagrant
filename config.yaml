@@ -1,0 +1,9 @@
+provider: libvirt
+topology:
+    workers_count: 2
+    master:
+        memory: 3000  # in bytes
+        cpu: 3
+    worker:
+        memory: 4000  # in bytes
+        cpu: 4
