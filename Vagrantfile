@@ -3,7 +3,7 @@
 
 require 'yaml'
 configuration = YAML.load_file('config.yaml')
-machines = configuration['machines']
+machine = configuration['machines']
 
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 ENV['VAGRANT_DEFAULT_PROVIDER'] = configuration['provider']
