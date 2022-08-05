@@ -14,7 +14,7 @@ config_dict = yaml.load(config_file, Loader=SafeLoader)
 
 with open('Vagrantfile', 'r') as f :
     provider = config_dict['provider']
-    master-ip-address = config_dict['Master-Ip-Address']
+    master_ip_address = config_dict['Master-Ip-Address']
     workers_count = config_dict['topology']['workers_count']
     master_memory = config_dict['topology']['master']['memory']
     master_cpu = config_dict['topology']['master']['cpu']
@@ -22,7 +22,7 @@ with open('Vagrantfile', 'r') as f :
     worker_cpu = config_dict['topology']['worker']['cpu']
     filedata = f.read()
     newdata = filedata.replace('{{Provider}}', str(provider))
-    newdata = newdata.replace('{{Master-Ip-Address}}', str(Master-Ip-Address))
+    newdata = newdata.replace('{{Master-Ip-Address}}', str(Master_Ip_Address))
     newdata = newdata.replace('{{WorkerCount}}', str(workers_count))
     newdata = newdata.replace('{{MasterMemory}}', str(master_memory))
     newdata = newdata.replace('{{MasterCPU}}', str(master_cpu))
