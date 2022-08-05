@@ -1,5 +1,4 @@
 token: my-shared-secret
 cni: multus,canal
-tls-san: 
-  - orange-rke2.com
+
 
