@@ -12,6 +12,12 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = configuration['provider']
 Vagrant.configure("2") do |config|
 
   machines.each do |machine|
+    case machine['role']
+      when "master"
+        master_ip = machine['ip'].to_s
+        puts master_ip
+        puts "Hello"
+    end
     config.vm.define machine['name']  do |node|
       # The following will be executed regardless of the node role (master or worker)
       node.vm.box = machine['box']
@@ -25,7 +31,6 @@ Vagrant.configure("2") do |config|
       case machine['role']
         when "master"
           node.vm.provision "file", source: "config_server.yml" , destination: "~/config_server.yaml"
-          master_ip = machine['ip'].to_s
           node.vm.network "private_network", ip: machine['ip']
           node.vm.provision "shell", path: "install_server.sh", privileged: false
           node.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
