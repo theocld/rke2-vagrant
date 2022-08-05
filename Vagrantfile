@@ -1,43 +1,38 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'yaml'
+configuration = YAML.load_file('config.yaml')
+machines = configuration['machines']
+
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
-ENV['VAGRANT_DEFAULT_PROVIDER'] = '{{Provider}}'
+ENV['VAGRANT_DEFAULT_PROVIDER'] = configuration['provider']
 
 Vagrant.configure("2") do |config|
 
-  
-  config.vm.define "master" do |master|
-    master.vm.box = "generic/ubuntu2110"
-    master.vm.hostname = "master"
-    master.vm.network "private_network", ip: "{{Master-Ip-Address}}"
-    master.vm.provision "file", source: "config_server.yml" , destination: "~/config_server.yaml"
-    master.vm.provision "shell", path: "preliminary_stage_node.sh", privileged: false
-    master.vm.provision "shell", path: "install_server.sh", privileged: false
-    master.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
-    master.vm.provider "{{Provider}}" do |p|
-      p.memory = {{MasterMemory}}
-      p.cpus= {{MasterCPU}}
+  machines.each do |machine|
+    config.vm.define machine['name']  do |node|
+      # The following will be executed regardless of the node role (master or worker)
+      node.vm.box = machine['box']
+      node.vm.hostname = machine['name']
+      node.vm.provider configuration['provider'] do |p|
+        p.memory = machine['memory']
+        p.cpus= machine['cpu']
+      end
+      node.vm.provision "shell", path: "preliminary_stage_node.sh", privileged: false
+      # The following depend on the node role
+      case machine['role']
+        when "master"
+          node.vm.provision "file", source: "config_server.yml" , destination: "~/config_server.yaml"
+          node.vm.network "private_network", ip: machine['ip']
+          node.vm.provision "shell", path: "install_server.sh", privileged: false
+          node.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
+        when "worker"
+          node.vm.network "private_network", type: "dhcp"
+          worker.vm.provision "file", source: "config_agent.yml" , destination: "~/config_agent.yaml"
+          worker.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [machine['ip']]
+      end
     end
   end
 
-  WorkerCount = {{WorkerCount}}
-  MasterIPAddress = '{{Master-Ip-Address}}'
-
-  (1..WorkerCount).each do |i|
-    config.vm.define "worker#{i}" do |worker|
-      worker.vm.box = "generic/ubuntu2110"
-      worker.vm.hostname = "worker#{i}"
-      worker.vm.network "private_network", type: "dhcp"
-      worker.vm.provision "file", source: "config_agent.yml" , destination: "~/config_agent.yaml"
-      worker.vm.provision "shell", path: "preliminary_stage_node.sh", privileged: false
-      worker.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [MasterIPAddress]
-      worker.vm.provider "{{Provider}}" do |p|
-        p.memory = {{WorkerMemory}}
-        p.cpus= {{WorkerCPU}}
-      end
-    end  
-  end
-
 end
-
