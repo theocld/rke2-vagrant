@@ -14,9 +14,7 @@ Vagrant.configure("2") do |config|
   machines.each do |machine|
     case machine['role']
       when "master"
-        master_ip = machine['ip'].to_s
-        puts master_ip
-        puts "Hello"
+        master_ip = machine['ip']
     end
     config.vm.define machine['name']  do |node|
       # The following will be executed regardless of the node role (master or worker)
