@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
       case machine['role']
         when "master"
           node.vm.provision "file", source: "config_server.yml" , destination: "~/config_server.yaml"
-          master_ip = machine['ip']
+          master_ip = machine['ip'].to_s
           node.vm.network "private_network", ip: machine['ip']
           node.vm.provision "shell", path: "install_server.sh", privileged: false
           node.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
