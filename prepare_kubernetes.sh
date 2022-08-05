@@ -9,4 +9,5 @@ source ~/.bashrc
 echo "Activation du cluster"
 sudo cp /etc/rancher/rke2/rke2.yaml $HOME
 sudo chown $(id -u):$(id -g) $HOME/rke2.yaml
-export KUBECONFIG=$HOME/rke2.yaml
+sudo echo export KUBECONFIG=$HOME/rke2.yaml >>.bashrc
+source ~/.bashrc
