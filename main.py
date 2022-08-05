@@ -22,7 +22,7 @@ with open('Vagrantfile', 'r') as f :
     worker_cpu = config_dict['topology']['worker']['cpu']
     filedata = f.read()
     newdata = filedata.replace('{{Provider}}', str(provider))
-    newdata = newdata.replace('{{Master-Ip-Address}}', str(Master_Ip_Address))
+    newdata = newdata.replace('{{Master-Ip-Address}}', str(master_ip_address))
     newdata = newdata.replace('{{WorkerCount}}', str(workers_count))
     newdata = newdata.replace('{{MasterMemory}}', str(master_memory))
     newdata = newdata.replace('{{MasterCPU}}', str(master_cpu))
@@ -41,23 +41,4 @@ sleep(3)
 #print('Master reloaded')
 #sleep(3)
 
-# Get the join command on the master
-print("Getting the join command")
-output_txt = ""
-command = "sudo vagrant ssh master -c 'sudo kubeadm token create --print-join-command'"
-output = os.popen(command)
-sleep(10)
-output_txt = output.read()
-output_txt = "sudo " + output_txt
-print(output_txt)
-
-# Run the join command on workers
-for i in range(1, workers_count+1):
-    print("Joining worker"+str(i))
-    joint_output_txt = ""
-    join_command = "sudo vagrant ssh worker" + str(i) + " -c '" + output_txt + "'"
-    joint_output = os.popen(join_command)
-    joint_output_txt = joint_output.read()
-    print(joint_output_txt)
-    
     
