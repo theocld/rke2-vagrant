@@ -22,6 +22,7 @@ Vagrant.configure("2") do |config|
   end
 
   WorkerCount = {{WorkerCount}}
+  MasterIPAddress = '{{Master-Ip-Address}}'
 
   (1..WorkerCount).each do |i|
     config.vm.define "worker#{i}" do |worker|
@@ -30,7 +31,7 @@ Vagrant.configure("2") do |config|
       worker.vm.network "private_network", type: "dhcp"
       worker.vm.provision "file", source: "config_agent.yml" , destination: "~/config_agent.yaml"
       worker.vm.provision "shell", path: "preliminary_stage_node.sh", privileged: false
-      worker.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [{{Master-Ip-Address}}]
+      worker.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [MasterIPAddress]
       worker.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
       worker.vm.provider "{{Provider}}" do |p|
         p.memory = {{WorkerMemory}}
