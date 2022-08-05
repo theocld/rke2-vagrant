@@ -1,4 +1,3 @@
-server: https://orange-rke2.com:9345
 token: my-shared-secret
 cni: multus,canal
 
