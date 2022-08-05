@@ -29,8 +29,8 @@ Vagrant.configure("2") do |config|
           node.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
         when "worker"
           node.vm.network "private_network", type: "dhcp"
-          worker.vm.provision "file", source: "config_agent.yml" , destination: "~/config_agent.yaml"
-          worker.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [machine['ip']]
+          node.vm.provision "file", source: "config_agent.yml" , destination: "~/config_agent.yaml"
+          node.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [machine['ip']]
       end
     end
   end
