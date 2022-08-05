@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
         when "worker"
           node.vm.network "private_network", type: "dhcp"
           node.vm.provision "file", source: "config_agent.yml" , destination: "~/config_agent.yaml"
-          node.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [master_ip]
+          node.vm.provision "shell", path: "install_agent.sh", privileged: false, args: ["#{master_ip}"]
       end
     end
   end
