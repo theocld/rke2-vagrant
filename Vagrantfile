@@ -7,6 +7,8 @@ machines = configuration['machines']
 
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 ENV['VAGRANT_DEFAULT_PROVIDER'] = configuration['provider']
+machine_ip = (machine['ip']).to_s
+
 
 Vagrant.configure("2") do |config|
 
@@ -30,7 +32,7 @@ Vagrant.configure("2") do |config|
         when "worker"
           node.vm.network "private_network", type: "dhcp"
           node.vm.provision "file", source: "config_agent.yml" , destination: "~/config_agent.yaml"
-          node.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [machine['ip']]
+          node.vm.provision "shell", path: "install_agent.sh", privileged: false, args: [machine_ip]
       end
     end
   end
