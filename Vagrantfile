@@ -7,10 +7,11 @@ machines = configuration['machines']
 
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 ENV['VAGRANT_DEFAULT_PROVIDER'] = configuration['provider']
-master_ip = nil
+
 
 Vagrant.configure("2") do |config|
-
+  
+  master_ip = nil
   machines.each do |machine|
     case machine['role']
       when "master"
