@@ -7,7 +7,7 @@ machines = configuration['machines']
 
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 ENV['VAGRANT_DEFAULT_PROVIDER'] = configuration['provider']
-
+master_ip = nil
 
 Vagrant.configure("2") do |config|
 
