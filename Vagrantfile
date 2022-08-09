@@ -31,6 +31,7 @@ Vagrant.configure("2") do |config|
         when "master"
           node.vm.provision "file", source: "config_server.yml" , destination: "~/config_server.yaml"
           node.vm.network "private_network", ip: machine['ip']
+          node.vm.network "public_network", ip: "172.31.16.94"
           node.vm.provision "shell", path: "install_server.sh", privileged: false
           node.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
         when "worker"
