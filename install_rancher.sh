@@ -16,5 +16,5 @@ helm install cert-manager jetstack/cert-manager \
 echo "Installation de Rancher"
 helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
-  --set hostname=$1.sslip.io \
+  --set hostname=172.31.16.94.sslip.io \
   --set bootstrapPassword=admin
