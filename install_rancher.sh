@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Importation des charts helm et creation de l'environement Rancher"
-helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 kubectl create namespace cattle-system
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cert-manager.crds.yaml
 helm repo add jetstack https://charts.jetstack.io
