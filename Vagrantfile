@@ -12,10 +12,12 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = configuration['provider']
 Vagrant.configure("2") do |config|
   
   master_ip = nil
+  public_ip = nil
   machines.each do |machine|
     case machine['role']
       when "master"
         master_ip = machine['ip']
+        public_ip = machine['public_ip']
     end
     config.vm.define machine['name']  do |node|
       # The following will be executed regardless of the node role (master or worker)
@@ -30,8 +32,9 @@ Vagrant.configure("2") do |config|
       case machine['role']
         when "master"
           node.vm.provision "file", source: "config_server.yml" , destination: "~/config_server.yaml"
+          node.vm.provision "file", source: "install_rancher.sh" , destination: "~/install_rancher.sh", args: ["#{public_ip}"]
           node.vm.network "private_network", ip: machine['ip']
-          node.vm.network "public_network", ip: "172.31.16.94"
+          node.vm.network "public_network", ip: machine['public_ip']
           node.vm.provision "shell", path: "install_server.sh", privileged: false
           node.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
           node.vm.provision "shell", incline: "ip route add default via 172.31.16.1", privileged: true
