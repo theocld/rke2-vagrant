@@ -6,6 +6,7 @@ machines:
         memory: 3000  # in bytes
         cpu: 3
         ip: 192.168.121.10
+        public_ip: 172.31.16.94
     -   role: worker
         name: worker1
         box: generic/ubuntu2010
