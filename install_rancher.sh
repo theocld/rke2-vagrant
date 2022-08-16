@@ -11,5 +11,5 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 echo "Installation de Rancher"
 helm install rancher rancher-stable/rancher  \
   --namespace cattle-system \
-  --set hostname=172.31.16.94.sslip.io \
+  --set hostname=172.31.16.95.sslip.io \
   --set bootstrapPassword=admin
