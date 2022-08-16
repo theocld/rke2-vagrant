@@ -7,6 +7,7 @@ kubectl create namespace cattle-system
 echo "Installation du gestionnaire de certificat"
 kubectl create namespace cert-manager
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
+kubectl delete ValidationWebhookConfiguration --all
 
 echo "Installation de Rancher"
 helm install rancher rancher-stable/rancher  \
