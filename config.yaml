@@ -3,18 +3,18 @@ machines:
     -   role: master
         name: master1
         box: generic/ubuntu2010
-        memory: 3000  # in bytes
-        cpu: 3
+        memory: 12000  # in bytes
+        cpu: 8
         ip: 192.168.121.10
     -   role: worker
         name: worker1
         box: generic/ubuntu2010
-        memory: 4000  # in bytes
-        cpu: 4
+        memory: 12000  # in bytes
+        cpu: 8
         #ip: 10.100.100.31
     -   role: worker
         name: worker2
         box: generic/ubuntu2010
-        memory: 4000  # in bytes
-        cpu: 4
+        memory: 12000  # in bytes
+        cpu: 8
         #ip: 10.100.100.32
