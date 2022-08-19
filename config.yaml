@@ -7,13 +7,13 @@ machines:
         cpu: 8
         ip: 192.168.121.10
     -   role: master_ha
-        name: master_ha1
+        name: masterha1
         box: generic/ubuntu2010
         memory: 12000  # in bytes
         cpu: 8
         #ip: 10.100.100.32
     -   role: master_ha
-        name: master_ha2
+        name: masterha2
         box: generic/ubuntu2010
         memory: 12000  # in bytes
         cpu: 8
