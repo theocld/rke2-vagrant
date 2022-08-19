@@ -1,20 +1,26 @@
 provider: libvirt
 machines:
     -   role: master
-        name: master1
+        name: master
         box: generic/ubuntu2010
         memory: 12000  # in bytes
         cpu: 8
         ip: 192.168.121.10
-    -   role: worker
-        name: worker1
-        box: generic/ubuntu2010
-        memory: 12000  # in bytes
-        cpu: 8
-        #ip: 10.100.100.31
-    -   role: worker
-        name: worker2
+    -   role: master_ha
+        name: master_ha1
         box: generic/ubuntu2010
         memory: 12000  # in bytes
         cpu: 8
         #ip: 10.100.100.32
+    -   role: master_ha
+        name: master_ha2
+        box: generic/ubuntu2010
+        memory: 12000  # in bytes
+        cpu: 8
+        #ip: 10.100.100.31
+    -   #role: worker
+        #name: worker1
+        #box: generic/ubuntu2010
+        #memory: 12000  # in bytes
+        #cpu: 8
+        #ip: 10.100.100.31
