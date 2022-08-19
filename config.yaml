@@ -18,9 +18,4 @@ machines:
         memory: 12000  # in bytes
         cpu: 8
         #ip: 10.100.100.31
-    -   #role: worker
-        #name: worker1
-        #box: generic/ubuntu2010
-        #memory: 12000  # in bytes
-        #cpu: 8
-        #ip: 10.100.100.31
+   
