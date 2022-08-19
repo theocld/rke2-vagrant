@@ -41,6 +41,11 @@ Vagrant.configure("2") do |config|
           node.vm.network "private_network", type: "dhcp"
           node.vm.provision "file", source: "config_agent.yml" , destination: "~/config_agent.yaml"
           node.vm.provision "shell", path: "install_agent.sh", privileged: false, args: ["#{master_ip}"]
+        when "master_ha"
+          node.vm.network "private_network", type: "dhcp"
+          node.vm.provision "file", source: "config_server.yml" , destination: "~/config_server.yaml"
+          node.vm.provision "shell", path: "install_server_ha.sh", privileged: false, args: ["#{master_ip}"]
+          node.vm.provision "shell", path: "prepare_kubernetes.sh", privileged: false
       end
     end
   end
