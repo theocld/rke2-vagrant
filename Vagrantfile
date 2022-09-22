@@ -45,6 +45,9 @@ Vagrant.configure("2") do |config|
           node.vm.network "private_network", type: "dhcp"
           node.vm.provision "file", source: "config_server.yml" , destination: "~/config_server.yaml"
           node.vm.provision "shell", path: "install_server_ha.sh", privileged: false, args: ["#{master_ip}"]
+        when "load_balancer"
+          node.vm.network "private_network", type: "dhcp"
+          node.vm.network "public_network", ip: "172.31.16.96"
       end
     end
   end
