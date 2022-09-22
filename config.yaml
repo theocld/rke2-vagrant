@@ -3,20 +3,20 @@ machines:
     -   role: master
         name: master
         box: generic/ubuntu2010
-        memory: 12000  # in bytes
-        cpu: 8
+        memory: 8000  # in bytes
+        cpu: 4
         ip: 192.168.121.10
     -   role: master_ha
         name: masterha1
         box: generic/ubuntu2010
-        memory: 12000  # in bytes
-        cpu: 8
+        memory: 8000  # in bytes
+        cpu: 4
         #ip: 10.100.100.32
     -   role: master_ha
         name: masterha2
         box: generic/ubuntu2010
-        memory: 12000  # in bytes
-        cpu: 8
+        memory: 8000  # in bytes
+        cpu: 4
         #ip: 10.100.100.31
     -   role: load_balancer
         name: lb1
