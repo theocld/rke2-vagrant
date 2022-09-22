@@ -18,15 +18,9 @@ machines:
         memory: 12000  # in bytes
         cpu: 8
         #ip: 10.100.100.31
-    -   role: worker
-        name: worker1
+    -   role: load_balancer
+        name: lb1
         box: generic/ubuntu2010
-        memory: 12000  # in bytes
-        cpu: 8
-        #ip: 10.100.100.3
-    -   role: worker
-        name: worker2
-        box: generic/ubuntu2010
-        memory: 12000  # in bytes
-        cpu: 8
+        memory: 1200  # in bytes
+        cpu: 2
         #ip: 10.100.100.3
