@@ -21,7 +21,7 @@ Modify the config.yaml file to configure the virtual infrastructure (Use Vim for
 
 | Parameter        | Description           | 
 | ------------- |:-------------:| 
-| provider | VM provider (libvirt, virtualbox, vmware, hyper-v) | 
+| provider | VM provider (libvirt, virtualbox, vmware, hyperv) | 
 | role | Role of the node (master, master_ha, worker, load_balancer)      |   
 | name |  Name of the node  |   
 | box | Vagrant box = [OS](https://app.vagrantup.com/boxes/search) of the node |
