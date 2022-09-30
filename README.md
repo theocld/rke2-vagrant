@@ -9,6 +9,12 @@ sudo apt install git-all
 git clone https://github.com/theocld/rke2-vagrant.git
 cd rke2-vagrant
 ```
+## Deploy your kubernetes cluster
+If you want a default 3 nodes cluster ( 1 master 2 workers), you can now run this command to deploy your virtual infrastructure and automatically install kubernetes on it. But if you prefer to customize your cluster, follow the next steps before running vagrant up.
+
+```bash
+sudo vagrant up
+```
 
 ## VM Setup
 Modify the config.yaml file to configure the virtual infrastructure (Use Vim for example). Each dash corresponds to a machine. Duplicate or delete the key/value blocks according to your wishes.
@@ -39,4 +45,7 @@ node-label:
 ## Configure rke2 agent node
 Same way with config_agent.yml. Check this [link](https://docs.rke2.io/install/install_options/linux_agent_config/) instead.
 
-
+## Delete your cluster 
+```bash
+sudo vagrant destroy -f
+```
