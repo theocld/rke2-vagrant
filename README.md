@@ -45,6 +45,11 @@ node-label:
 ## Configure rke2 agent node
 Same way with config_agent.yml. Check this [link](https://docs.rke2.io/install/install_options/linux_agent_config/) instead.
 
+## Access to a specific node
+```bash
+sudo vagrant ssh {name_of_your_node}
+```
+
 ## Delete your cluster 
 ```bash
 sudo vagrant destroy -f
