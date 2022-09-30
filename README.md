@@ -10,7 +10,7 @@ git clone https://github.com/theocld/rke2-vagrant.git
 cd rke2-vagrant
 ```
 ## Deploy your kubernetes cluster
-If you want a default 3 nodes cluster ( 1 master 2 workers), you can now run this command to deploy your virtual infrastructure and automatically install kubernetes on it. But if you prefer to customize your cluster, follow the next steps before running vagrant up.
+If you want a default 3 nodes cluster ( 1 master 2 workers), you can now run this command to deploy your virtual infrastructure and automatically install kubernetes on it. But if you prefer to customize your cluster first, follow the next steps before running vagrant up.
 
 ```bash
 sudo vagrant up
