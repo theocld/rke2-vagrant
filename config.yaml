@@ -7,7 +7,12 @@ machines:
         cpu: 2
         ip: 192.168.121.10
     -   role: worker
-        name: worker
+        name: worker1
+        box: generic/ubuntu2010
+        memory: 6000  # in bytes
+        cpu: 2
+    -   role: worker
+        name: worker2
         box: generic/ubuntu2010
         memory: 6000  # in bytes
         cpu: 2
