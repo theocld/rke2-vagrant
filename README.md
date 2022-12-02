@@ -30,7 +30,7 @@ Modify the config.yaml file to configure the virtual infrastructure (Use Vim for
 | ip (master) | Private IP of the master|
 
 ## Configure rke2 server node 
-Modify the config_server.yml file to configure your master(s). The list of existing parameters and their possible values can be found on this [link](https://docs.rke2.io/install/install_options/server_config/).
+Modify the config_server.yml file to configure your master(s). The list of existing parameters and their possible values can be found on this [link](https://docs.rke2.io/reference/server_config).
 
 #### Exemple of config_server.yml :
 
@@ -43,7 +43,7 @@ node-label:
   - "something=amazing"
 ```
 ## Configure rke2 agent node
-Same way with config_agent.yml. Check this [link](https://docs.rke2.io/install/install_options/linux_agent_config/) instead.
+Same way with config_agent.yml. Check this [link](https://docs.rke2.io/reference/linux_agent_config) instead.
 
 ## Access to a specific node
 ```bash
